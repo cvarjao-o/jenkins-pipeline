@@ -72,7 +72,7 @@ app {
                         'MASTER_CPU_LIMIT': '500m',
                         'SLAVE_CPU_REQUEST': '300m',
                         'SLAVE_CPU_LIMIT': '500m',
-                        'ROUTE_HOST': 'jenkinns-hello-cvarjao.pathfinder.gov.bc.ca'
+                        'ROUTE_HOST': "${app.deployment.id}-${app.deployment.namespace}.pathfinder.gov.bc.ca"
                     ]
                 ]
         ]
@@ -87,10 +87,11 @@ environments {
                     name ="dev"
                     id = "pr-${opt.'pr'}"
                 }
-                suffix = "-dev-${opt.'pr'}"
+                suffix = "-${vars.deployment.env.name}-${opt.'pr'}"
                 name = "${opt.'deployment-name'?:app.name}"
                 namespace = app.namespaces[env.name].namespace
                 version = "${vars.deployment.name}-${vars.deployment.env.name}-v${opt.'pr'}" //app-version  and tag
+                host = 'jenkinns-hello-cvarjao.pathfinder.gov.bc.ca'
             }
         }
     }
@@ -101,7 +102,7 @@ environments {
                     name ="test"
                     id = "pr-${opt.'pr'}"
                 }
-                suffix = '-test'
+                suffix = "-${vars.deployment.env.name}"
                 name = "${opt.'deployment-name'?:app.name}"
                 namespace = app.namespaces[env.name].namespace
                 version = "${vars.deployment.name}-${vars.deployment.env.name}" //app-version  and tag
