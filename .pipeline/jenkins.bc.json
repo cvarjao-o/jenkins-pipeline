@@ -112,7 +112,7 @@
             "kind": "BuildConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}-core",
+                "name": "${NAME}-core${SUFFIX}",
                 "creationTimestamp": null
             },
             "spec": {
@@ -168,7 +168,7 @@
             "kind": "BuildConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}${SUFFIX}-basic",
+                "name": "${NAME}-basic${SUFFIX}",
                 "creationTimestamp": null
             },
             "spec": {
