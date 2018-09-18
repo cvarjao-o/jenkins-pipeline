@@ -28,7 +28,7 @@ app {
             name = "build"
             id = "pr-${opt.'pr'}"
         }
-        version = "${vars.deployment.version}" //app-version  and tag
+        version = "${app.build.env.name}-v${opt.'pr'}"
         name = "${opt.'build-name'?:app.name}"
         suffix = "-build-${opt.'pr'}"
         id = "${app.name}${app.build.suffix}"
