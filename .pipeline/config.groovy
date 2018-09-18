@@ -59,12 +59,14 @@ app {
         timeoutInSeconds = 60*20 // 20 minutes
         templates = [
                 [
-                    'file':'https://raw.githubusercontent.com/cvarjao-o/openshift-templates/f1d3e44018618ef7c9b9b52dd81d83d7030115db/jenkins/jenkins.dc.yaml',
+                    'file':'https://raw.githubusercontent.com/cvarjao-o/openshift-templates/7d2eb91ffb7d6506e924abea261c9909a4598ee6/jenkins/jenkins.dc.yaml',
                     'params':[
                         'NAME':app.deployment.name,
                         'BC_NAME':app.build.name,
                         'NAME_SUFFIX':'cvarjao',
                         'VERSION': app.deployment.version,
+                        'MASTER_CPU_REQUEST': '500m',
+                        'MASTER_CPU_LIMIT': '1000m',
                         'ROUTE_HOST': 'jenkinns-hello-cvarjao.pathfinder.gov.bc.ca'
                     ]
                 ]
